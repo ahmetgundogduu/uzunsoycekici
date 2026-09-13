@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Uzunsoy Çekici
 
-## Getting Started
+Uzunsoy Çekici markası için Next.js + Tailwind CSS ile hazırlanmış responsive tanıtım sitesi.
 
-First, run the development server:
+## Geliştirme
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcıda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Yerel ortamda `RESEND_API_KEY` yoksa formlar yine çalışır; mail gönderilmez, talep sunucu loguna yazılır.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Ortam değişkenleri
 
-## Learn More
+`.env.example` dosyasını `.env.local` olarak kopyalayın:
 
-To learn more about Next.js, take a look at the following resources:
+| Değişken | Açıklama |
+| --- | --- |
+| `CONTACT_EMAIL` | “Sizi arayalım” ve iletişim formlarının gideceği adres |
+| `MAIL_FROM` | Resend’de tanımlı gönderen adres |
+| `RESEND_API_KEY` | [Resend](https://resend.com) API anahtarı |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Canlı ortamda bu üç değişken zorunludur. `CONTACT_EMAIL` istemciye gönderilmez.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Vercel
 
-## Deploy on Vercel
+1. Repoyu Vercel’e bağlayın. Framework Next.js olarak algılanır; ekstra `vercel.json` gerekmez.
+2. Project Settings → Environment Variables içine yukarıdaki üç değeri ekleyin (Production / Preview).
+3. Resend’de domain doğrulayın ve `MAIL_FROM` değerini o domaine ayarlayın. Test için `onboarding@resend.dev` yalnızca hesap e-postanıza gönderir.
+4. Deploy edin. Node.js 20.9+ gerekir.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Yapı
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/components` — Header, Hero, Forms, Footer ve ortak UI
+- `src/lib/actions.ts` — fiyat ve iletişim formlarının sunucu aksiyonları
+- `src/lib/constants.ts` — marka bilgileri, menü ve form seçenekleri
+- `public/images` — hero ve ekip görselleri
+- `design/` — referans tasarım mockupları

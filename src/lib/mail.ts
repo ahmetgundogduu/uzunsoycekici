@@ -25,6 +25,23 @@ function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function normalizeMailFrom(value: string) {
+  let from = value.trim();
+  if (
+    (from.startsWith('"') && from.endsWith('"')) ||
+    (from.startsWith("'") && from.endsWith("'"))
+  ) {
+    from = from.slice(1, -1).trim();
+  }
+  return from.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+}
+
+function isMailFrom(value: string) {
+  if (isEmail(value)) return true;
+  const match = value.match(/^.+\s<([^<>]+)>$/);
+  return Boolean(match && isEmail(match[1]));
+}
+
 function renderText(payload: LeadEmail) {
   return [
     payload.title,
@@ -56,7 +73,7 @@ export async function sendLeadEmail(
   payload: LeadEmail,
 ): Promise<{ ok: true } | { ok: false }> {
   const to = process.env.CONTACT_EMAIL?.trim();
-  const from = process.env.MAIL_FROM?.trim();
+  const from = normalizeMailFrom(process.env.MAIL_FROM ?? "");
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const isProduction = process.env.NODE_ENV === "production";
 
@@ -69,8 +86,8 @@ export async function sendLeadEmail(
     return { ok: false };
   }
 
-  if (!apiKey || !from) {
-    console.error("[mail] RESEND_API_KEY veya MAIL_FROM eksik");
+  if (!apiKey || !from || !isMailFrom(from)) {
+    console.error("[mail] RESEND_API_KEY veya MAIL_FROM eksik/geçersiz");
     if (!isProduction) {
       console.info("[mail] geliştirme ortamında gönderim atlandı", {
         to,

@@ -61,6 +61,7 @@ export async function submitQuote(
     const name = readString(formData, "name");
     const phone = readString(formData, "phone");
     const location = readString(formData, "location");
+    const destination = readString(formData, "destination");
     const vehicleType = readString(formData, "vehicleType");
 
     if (name.length < 2 || name.length > 80) {
@@ -73,7 +74,10 @@ export async function submitQuote(
       };
     }
     if (location.length < 2 || location.length > 200) {
-      return { status: "error", message: "Lütfen konum bilgisini girin." };
+      return { status: "error", message: "Lütfen alınacak konumu girin." };
+    }
+    if (destination.length < 2 || destination.length > 200) {
+      return { status: "error", message: "Lütfen gideceği yeri girin." };
     }
     if (!VEHICLE_VALUES.has(vehicleType)) {
       return { status: "error", message: "Lütfen araç tipini seçin." };
@@ -89,7 +93,8 @@ export async function submitQuote(
       fields: [
         { label: "Ad Soyad", value: name },
         { label: "Telefon", value: phone },
-        { label: "Konum", value: location },
+        { label: "Nereden", value: location },
+        { label: "Gideceği yer", value: destination },
         { label: "Araç Tipi", value: vehicleLabel },
       ],
     });

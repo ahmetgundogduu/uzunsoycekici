@@ -39,7 +39,7 @@ export default function AboutPage() {
               {ABOUT.story}
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              İstanbul ve çevre illerde gece gündüz hizmet veriyor; acil çekici,
+              Bursa ve çevre illerde gece gündüz hizmet veriyor; acil çekici,
               lastik değişimi, akü takviyesi ve şehirler arası araç taşıma
               ihtiyaçlarınızda yanınızda oluyoruz.
             </p>

@@ -1,18 +1,17 @@
 export const SITE = {
   name: "Uzunsoy Çekici",
   tagline: "7/24 Yol Yardım",
-  phone: "0555 123 4567",
-  phoneHref: "tel:+905551234567",
+  phone: "0543 402 27 12",
+  phoneHref: "tel:+905434022712",
   email: "info@uzunsoycekici.com",
-  address: "Atatürk Cad. No: 12, Kadıköy / İstanbul",
-  addressShort: "Kadıköy / İstanbul",
+  address: "Küçükbalıklı Mah. Şanlı Cad. No: 67, Osmangazi / Bursa",
+  addressShort: "Osmangazi / Bursa",
   workingHours: "7/24 Açık",
   copyrightYear: 2004,
-  /** Mock konum — gerçek adres gelince güncellenir */
   mapEmbedUrl:
-    "https://maps.google.com/maps?q=Kad%C4%B1k%C3%B6y%2C%20%C4%B0stanbul&z=14&output=embed",
+    "https://maps.google.com/maps?q=K%C3%BC%C3%A7%C3%BCkbal%C4%B1kl%C4%B1+Mahallesi+%C5%9Eanl%C4%B1+Caddesi+No:67+Osmangazi+Bursa&z=16&output=embed",
   mapLink:
-    "https://www.google.com/maps/search/?api=1&query=Kad%C4%B1k%C3%B6y%2C%20%C4%B0stanbul",
+    "https://www.google.com/maps/search/?api=1&query=K%C3%BC%C3%A7%C3%BCkbal%C4%B1kl%C4%B1+Mahallesi+%C5%9Eanl%C4%B1+Caddesi+No:67+Osmangazi+Bursa",
 } as const;
 
 export const NAV_LINKS = [
@@ -54,7 +53,7 @@ export const VEHICLE_TYPES = [
 export const ABOUT = {
   introTitle: "20 Yıllık Tecrübe ile Yanınızdayız",
   intro:
-    "Uzunsoy Çekici olarak İstanbul ve çevresinde 7/24 acil çekici, yol yardım ve araç taşıma hizmeti sunuyoruz. Deneyimli ekibimiz ve modern filomuzla yolda kaldığınız her an güvenle ulaşabileceğiniz bir çözüm ortağıyız.",
+    "Uzunsoy Çekici olarak Bursa ve çevresinde 7/24 acil çekici, yol yardım ve araç taşıma hizmeti sunuyoruz. Deneyimli ekibimiz ve modern filomuzla yolda kaldığınız her an güvenle ulaşabileceğiniz bir çözüm ortağıyız.",
   story:
     "Kurulduğumuz günden bu yana binlerce sürücüye yol yardımında bulunduk. Hızlı müdahale, şeffaf fiyatlandırma ve hasarsız taşıma prensiplerimizle müşterilerimizin güvenini kazandık. Her çağrıda aynı özen ve profesyonellikle yanınızdayız.",
   mission: {

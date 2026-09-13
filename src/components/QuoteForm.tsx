@@ -45,19 +45,29 @@ export function QuoteForm() {
       />
       <Input
         name="location"
-        placeholder="Konum"
+        placeholder="Nereden"
         autoComplete="street-address"
         required
         maxLength={200}
         disabled={pending}
       />
-      <Select
-        name="vehicleType"
+      <Input
+        name="destination"
+        placeholder="Gideceği yer"
+        autoComplete="off"
         required
-        options={VEHICLE_TYPES}
+        maxLength={200}
         disabled={pending}
-        defaultValue=""
       />
+      <div className="sm:col-span-2">
+        <Select
+          name="vehicleType"
+          required
+          options={VEHICLE_TYPES}
+          disabled={pending}
+          defaultValue=""
+        />
+      </div>
       <div className="space-y-2 sm:col-span-2">
         <Button
           type="submit"

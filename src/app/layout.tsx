@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "yol yardım",
     "uzunsoy çekici",
     "acil çekici",
-    "istanbul çekici",
+    "bursa çekici",
   ],
 };
 
